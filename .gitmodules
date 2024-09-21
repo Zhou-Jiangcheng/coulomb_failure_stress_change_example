@@ -1,0 +1,6 @@
+[submodule "coulomb_failure_stress_change"]
+	path = coulomb_failure_stress_change
+	url = https://github.com/Zhou-Jiangcheng/coulomb_failure_stress_change.git
+[submodule "pygrnwang"]
+	path = pygrnwang
+	url = https://github.com/Zhou-Jiangcheng/pygrnwang.git
