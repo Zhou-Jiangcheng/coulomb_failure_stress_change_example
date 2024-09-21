@@ -7,7 +7,9 @@ if __name__ == "__main__":
     processes_num = 6
     path_output = "/mypath/output_test_dynamic/cfs_S1_S2_d10"
     path_green = "/mypath/output_test_dynamic/grnlib"
-    path_faults_source = "/mypath/coulomb_failure_stress_change_example/path_faults_example"
+    path_faults_source = (
+        "/mypath/coulomb_failure_stress_change_example/path_faults_example"
+    )
     source_inds = [0]
     field_points = np.load(
         "/mypath/coulomb_failure_stress_change_example/path_faults_example/sub_faults_plane_exp1.npy"

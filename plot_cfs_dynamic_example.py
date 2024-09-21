@@ -65,8 +65,7 @@ def plot_cfs_sub(
     sub_faults = np.load(path_obs_fault)
     X, Y, Z = _reshape_sub_faults(sub_faults, num_dip, zoom_x, zoom_y)
 
-    sub_stress = np.load(os.path.join(
-        path_output, "cfs_plane_exp%d.npy" % ind_obs))
+    sub_stress = np.load(os.path.join(path_output, "cfs_plane_exp%d.npy" % ind_obs))
     # normal_stress = np.load(
     #     os.path.join(path_output, "normal_stress_plane_exp%d.npy" % ind_obs)
     # )
@@ -138,8 +137,7 @@ def plot_cfs_all(
         print(ind_obs)
         sub_faults = np.load(os.path.join(path_obs_faults_list[ind_obs]))
         sub_stress = np.load(
-            os.path.join(path_output, "cfs_plane_exp%d.npy" %
-                         obs_plane_inds[ind_obs])
+            os.path.join(path_output, "cfs_plane_exp%d.npy" % obs_plane_inds[ind_obs])
         )
         normal_stress = np.load(
             os.path.join(
@@ -154,23 +152,23 @@ def plot_cfs_all(
         # sub_stress = np.abs(shear_stress) + 0.4 * normal_stress
         print(
             "shear_stress min:",
-            np.min(shear_stress[:, n_t_list[0]: n_t_list[-1]]) / 1e6,
+            np.min(shear_stress[:, n_t_list[0] : n_t_list[-1]]) / 1e6,
             "MPa max:",
-            np.max(shear_stress[:, n_t_list[0]: n_t_list[-1]]) / 1e6,
+            np.max(shear_stress[:, n_t_list[0] : n_t_list[-1]]) / 1e6,
             "MPa",
         )
         print(
             "normal_stress min:",
-            np.min(normal_stress[:, n_t_list[0]: n_t_list[-1]]) / 1e6,
+            np.min(normal_stress[:, n_t_list[0] : n_t_list[-1]]) / 1e6,
             "MPa max:",
-            np.max(normal_stress[:, n_t_list[0]: n_t_list[-1]]) / 1e6,
+            np.max(normal_stress[:, n_t_list[0] : n_t_list[-1]]) / 1e6,
             "MPa",
         )
         print(
             "coulomb_stress min:",
-            np.min(sub_stress[:, n_t_list[0]: n_t_list[-1]]) / 1e6,
+            np.min(sub_stress[:, n_t_list[0] : n_t_list[-1]]) / 1e6,
             "MPa max:",
-            np.max(sub_stress[:, n_t_list[0]: n_t_list[-1]]) / 1e6,
+            np.max(sub_stress[:, n_t_list[0] : n_t_list[-1]]) / 1e6,
             "MPa",
         )
         w_num_list.append(sub_faults.shape[0] / h_num)
@@ -187,12 +185,10 @@ def plot_cfs_all(
             ind = j + i * ncols
             if n_t_list[ind] * srate <= 10:
                 cmap = matplotlib.colormaps["seismic"]
-                norm = Normalize(
-                    vmin=tick_range_bf10[0], vmax=tick_range_bf10[1])
+                norm = Normalize(vmin=tick_range_bf10[0], vmax=tick_range_bf10[1])
             else:
                 cmap = matplotlib.colormaps["seismic"]
-                norm = Normalize(
-                    vmin=tick_range_af10[0], vmax=tick_range_af10[1])
+                norm = Normalize(vmin=tick_range_af10[0], vmax=tick_range_af10[1])
             sub_w_num = 0
             for k in range(len(obs_plane_inds)):
                 ax = fig.add_axes(
@@ -243,15 +239,13 @@ def plot_cfs_all(
                     )
                     text.set_path_effects(
                         [
-                            path_effects.Stroke(
-                                linewidth=1, foreground="white"),
+                            path_effects.Stroke(linewidth=1, foreground="white"),
                             path_effects.Normal(),
                         ]
                     )
                     if i == nrows - 1:
                         ax.set_xlabel("Along Strike (km)")
-                        ax.xaxis.set_label_coords(
-                            w_num / w_num_list[0] * 0.5, -0.2)
+                        ax.xaxis.set_label_coords(w_num / w_num_list[0] * 0.5, -0.2)
                     if j == 0:
                         if i % 2 == 1:
                             ax.set_ylabel("Along Dip (km)")
@@ -279,8 +273,7 @@ def plot_cfs_all(
                         for x in range(sub_w_num_zoom)
                     ]
                     gap_10_km = round(
-                        sub_w_num_zoom * 10 /
-                        ((w_num_list[k] + 1) * sub_length_km)
+                        sub_w_num_zoom * 10 / ((w_num_list[k] + 1) * sub_length_km)
                     )
                     ax.set_xticks(ticks[::gap_10_km])
                     ax.set_xticklabels(tick_labels[::gap_10_km])
@@ -309,7 +302,9 @@ def plot_cfs_all(
 
 
 if __name__ == "__main__":
-    path_obs_faults = "/mypath/coulomb_failure_stress_change_example/path_faults_example"
+    path_obs_faults = (
+        "/mypath/coulomb_failure_stress_change_example/path_faults_example"
+    )
     obs_plane_inds_ = [1]
     path_obs_faults_list_ = []
     for i in obs_plane_inds_:
