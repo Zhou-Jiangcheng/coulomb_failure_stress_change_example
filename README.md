@@ -18,6 +18,7 @@ Clone the project with:
 git clone --recurse-submodules https://github.com/Zhou-Jiangcheng/coulomb_failure_stress_change_example
 ```
 
+## Linux
 On Debian-based Linux, install the `gfortran` compiler with:
 
 ```
@@ -33,11 +34,11 @@ gfortran ./*.f -O3 -o qssp2020.bin
 Similarly, in the `edgrn2.0-f77code` and `edcmp2.0-f77code` folders, compile the executables with:
 
 ```
-gfortran ./*.f -O3 -o edgrn2.0
+gfortran ./*.f -O3 -o edgrn2.0.bin
 ```
 
 ```
-gfortran ./*.f -O3 -o edcmp2.0
+gfortran ./*.f -O3 -o edcmp2.0.bin
 ```
 
 Next, install Anaconda3 or Miniforge and run the following commands:
@@ -49,6 +50,10 @@ conda install numpy scipy pandas tqdm mpi4py -c conda-forge # Install dependenci
 ```
 
 Add the folder path. For example, if your project is located at `/home/mydir/coulomb_failure_stress_change_example`, create and add `/home/mydir/coulomb_failure_stress_change_example` to the `/path_anaconda/envs/cfs/lib/python3.11/site-packages/custom.pth` file.
+
+## Windows
+
+It is recommended to use Cygwin to install gfortran on Windows systems and add its bin folder to the user PATH environment variable. Afterwards, you can use the gfortran.exe command in PowerShell to compile Fortran programs. The installation and usage of Python are the same as Linux.
 
 # Usage (Static CFS)
 
@@ -171,6 +176,10 @@ Run:
 python prepare_cfs_dynamic_example.py # Generate the corresponding pkl file
 mpirun -n 8 python cal_cfs_dynamic_example.py # Run in parallel using mpi, where 8 is `processes_num`.
 ```
+
+It is also possible to read and calculate point-to-point dynamic Coulomb stress Green's functions. Simply fill in the coordinates and mechanism of the source point in `cal_cfs_grn_p2p_example.py`. The meanings of other variables are the same as those used in the program for calculating the dynamic Coulomb stress from faults to field points, as described above.
+
+The script `read_cal_stress_qssp.m` serves as the MATLAB interface for this program. It allows MATLAB to call and read the calculated results, including `stress_enz`, `sigma_vector`, `sigma`, `tau`, `mean_stress`, `coulomb_stress`, and `coulomb_stress_pore`.
 
 ## Reading Dynamic Coulomb Failure Stress Results
 

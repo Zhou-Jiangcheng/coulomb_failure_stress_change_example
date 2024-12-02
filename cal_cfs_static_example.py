@@ -3,8 +3,8 @@ from coulomb_failure_stress_change.coulomb_stress_static import *
 if __name__ == "__main__":
     processes_num = 6
     path_output = "/mypath/output_test_static"
-    path_bin_edgrn = "/mypath/coulomb_failure_stress_change/edgrn2.0-f77code/edgrn2.0"
-    path_bin_edcmp = "/mypath/coulomb_failure_stress_change/edcmp2.0-f77code/edcmp2.0"
+    path_bin_edgrn = "/mypath/coulomb_failure_stress_change/edgrn2.0-f77code/edgrn2.0.bin"
+    path_bin_edcmp = "/mypath/coulomb_failure_stress_change/edcmp2.0-f77code/edcmp2.0.bin"
     ref_point = [37.2762992074037, 37.0745276572931, 9961.94698091746]
     path_faults_sources = "./path_faults_example"
     path_faults_obs = "./path_faults_example"

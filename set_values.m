@@ -1,0 +1,16 @@
+pyenv(Version="/home/zjc/miniforge3/envs/cfs/bin/python")
+path_green='/home/zjc/e/qb_d5/';
+sub_fm=[229.033727680000	87.4258972300000	-1.72357173000000];
+source_point=[37.2762992074037	37.0745276572931	9.96194698091746];
+field_point=[36.3754849400000	36.2014394400000	5.84622039000000];
+points_green_geo_struct=load('/home/zjc/e/qb_d5/points_grn_geo.mat');
+points_green_geo=points_green_geo_struct.points_grn_geo;
+sz_points_green_geo = size(points_green_geo);
+points_green_geo = reshape(points_green_geo,[sz_points_green_geo(1)*sz_points_green_geo(2),1]);
+event_dep_list=1:2:29;
+receiver_dep_list=1:2:29;
+srate_cfs=1;
+time_reduction=10;
+N_T=256;
+n_obs=[0.626313000000000	-0.746410770000000	-0.224951050000000];
+d_obs=[-0.778428180000000	-0.614415200000000	-0.128621610000000];

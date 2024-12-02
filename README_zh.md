@@ -18,6 +18,8 @@ Wang, Rongjiang, Heimann, S., Zhang, Y., Wang, H., & Dahm, T. (2017). Complete s
 git clone --recurse-submodules https://github.com/Zhou-Jiangcheng/coulomb_failure_stress_change_example
 ```
 
+## Linux
+
 在Debian系Linux上，使用
 
 ```
@@ -37,11 +39,11 @@ gfortran ./*.f -O3 -o qssp2020.bin
 同理在 edgrn2.0-f77code和 edcmp2.0-f77code文件夹使用
 
 ```
-gfortran ./*.f -O3 -o edgrn2.0
+gfortran ./*.f -O3 -o edgrn2.0.bin
 ```
 
 ```
-gfortran ./*.f -O3 -o edcmp2.0
+gfortran ./*.f -O3 -o edcmp2.0.bin
 ```
 
 编译生成可执行文件。
@@ -55,6 +57,11 @@ conda install numpy scipy pandas tqdm mpi4py -c conda-forge # 安装依赖项
 ```
 
 添加文件夹路径。例如，你clone的项目在 /home/mydir/coulomb_failure_stress_change_example，那么在创建文件/path_anaconda/envs/cfs/lib/python3.11/site-packages/custom.pth，并在其中添加一行/home/mydir/coulomb_failure_stress_change_example。
+
+## Windows
+
+建议在Windows系统中使用Cygwin安装gfortran，并将其bin文件夹添加到用户PATH环境变量。之后，可以在PowerShell中使用gfortran.exe命令编译Fortran程序。Python的安装和使用方法与Linux相同。
+
 
 # 使用 (静态cfs)
 
@@ -240,6 +247,10 @@ interp 是否做时空插值
 python prepare_cfs_dynamic_example.py # 生成对应pkl文件
 mpirun -n 8 python cal_cfs_dynamic_example.py # mpi并行运行，8为processes_num
 ```
+
+也可以读取并计算点对点的动态库仑应力格林函数，在cal_cfs_grn_p2p_example.py中填写源点的坐标，机制即可，其他变量意义与上述计算断层对场点的动态库仑应力程序相同。
+read_cal_stress_qssp.m为此程序的matlab接口，可通过matlab调用并读取计算stress_enz，sigma_vector, sigma, tau, mean_stress, coulomb_stress, coulomb_stress_pore
+
 
 ## 读取动态库仑破裂应力结果
 
