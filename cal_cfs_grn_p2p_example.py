@@ -3,7 +3,7 @@ import numpy as np
 from scipy.io import savemat
 
 from pygrnwang.create_qssp import create_points
-from pygrnwang.focal_mechanism import plane2nd, mt2plane
+from pygrnwang.focal_mechanism import mt2plane
 from coulomb_failure_stress_change.coulomb_stress_dynamic import (
     cal_coulomb_stress_grn_point2point,
 )
@@ -23,7 +23,6 @@ if __name__ == "__main__":
     ind_sub_fault = 30
     sub_fault_field = sub_faults_2[ind_sub_fault]
     sub_fm_field = sub_fms_2[ind_sub_fault]
-    n, d = plane2nd(*sub_fm_field)
 
     points = create_points(dist_range=[0, 320], delta_dist=5)
 
@@ -39,8 +38,9 @@ if __name__ == "__main__":
         coulomb_stress_pore
     ) = cal_coulomb_stress_grn_point2point(
         path_green="/e/qb_d5",
-        sub_fm=sub_fm,
+        fm_source=sub_fm,
         source_point=[37.2762992074037, 37.0745276572931, 9.96194698091746],
+        fm_field=sub_fm_field,
         field_point=sub_fault_field,
         points_green_geo_flatten=points.flatten(),
         event_dep_list=[2 * h + 1 for h in range(15)],
@@ -48,8 +48,7 @@ if __name__ == "__main__":
         srate_cfs=1,
         time_reduction=10,
         N_T=256,
-        n_obs=n,
-        d_obs=d,
+
         max_slowness=0.4,
         mu_f=0.4,
         mu_f_pore=0.6,

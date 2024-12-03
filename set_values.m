@@ -1,7 +1,8 @@
 pyenv(Version="/home/zjc/miniforge3/envs/cfs/bin/python")
 path_green='/home/zjc/e/qb_d5/';
-sub_fm=[229.033727680000	87.4258972300000	-1.72357173000000];
-source_point=[37.2762992074037	37.0745276572931	9.96194698091746];
+fm_source=[229.033727680000, 87.4258972300000, -1.72357173000000];
+source_point=[37.2762992074037, 37.0745276572931, 9.96194698091746];
+fm_field=[220., 77., 7.58546272];
 field_point=[36.3754849400000	36.2014394400000	5.84622039000000];
 points_green_geo_struct=load('/home/zjc/e/qb_d5/points_grn_geo.mat');
 points_green_geo=points_green_geo_struct.points_grn_geo;
